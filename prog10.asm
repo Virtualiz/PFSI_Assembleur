@@ -2,10 +2,13 @@ SEUIL EQU 3
 INA EQU 0xFFA0
 OUTA EQU 0xFFA2
 LOADA EQU 0xFFDC
+SP EQU R15
+STACKA EQU 0x1000
 
     ORG LOADA
     START LOADA
-DEBUT LDW R2,@INA //lire val dans paramètre (R2)
+DEBUT LDW SP,#STACKA
+    LDW R2,@INA //lire val dans paramètre (R2)
     JSR @DISTA
     STW R0,@OUTA //ecrire la sortie dans outa
     JMP #DEBUT-$-2
