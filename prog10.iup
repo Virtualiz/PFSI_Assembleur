@@ -2,7 +2,7 @@ ffdc  origine
 ffdc  debut d'execution
 6f80   emplacement : 65500  (0xffdc)  ligne n° 10	DEBUT LDW SP,#STACKA
 1000   emplacement : 65502  (0xffde) 
-62d0   emplacement : 65504  (0xffe0)  ligne n° 11	    LDW R2,@INA //lire val dans paramC(tre (R2)
+62d0   emplacement : 65504  (0xffe0)  ligne n° 11	    LDW R2,@INA //lire val dans parametre (R2)
 ffa0   emplacement : 65506  (0xffe2) 
 0a50   emplacement : 65508  (0xffe4)  ligne n° 12	    JSR @DISTA
 fff0   emplacement : 65510  (0xffe6) 
@@ -10,11 +10,13 @@ fff0   emplacement : 65510  (0xffe6)
 ffa2   emplacement : 65514  (0xffea) 
 0180   emplacement : 65516  (0xffec)  ligne n° 14	    JMP #DEBUT-$-2
 ffee   emplacement : 65518  (0xffee) 
-6180   emplacement : 65520  (0xfff0)  ligne n° 16	DISTA LDW R1,#SEUIL //charge le seuil dans R1
-0003   emplacement : 65522  (0xfff2) 
-f212   emplacement : 65524  (0xfff4)  ligne n° 17	    SUB R2,R1,R2 // soustrait par le seuil
-0480   emplacement : 65526  (0xfff6)  ligne n° 18	    JGE #POSIT-$-2
-0004   emplacement : 65528  (0xfff8) 
-4722   emplacement : 65530  (0xfffa)  ligne n° 19	    NEG R2,R2
-4320   emplacement : 65532  (0xfffc)  ligne n° 20	POSIT SRA R2,R0
-0200   emplacement : 65534  (0xfffe)  ligne n° 21	    RTS
+614f   emplacement : 65520  (0xfff0)  ligne n° 16	DISTA STW R1,-(SP) //PUSH R1
+6180   emplacement : 65522  (0xfff2)  ligne n° 17	    LDW R1,#SEUIL //charge le seuil dans R1
+0003   emplacement : 65524  (0xfff4) 
+f212   emplacement : 65526  (0xfff6)  ligne n° 18	    SUB R2,R1,R2 // soustrait par le seuil
+0480   emplacement : 65528  (0xfff8)  ligne n° 19	    JGE #POSIT-$-2
+0004   emplacement : 65530  (0xfffa) 
+4722   emplacement : 65532  (0xfffc)  ligne n° 20	    NEG R2,R2
+4320   emplacement : 65534  (0xfffe)  ligne n° 21	POSIT SRA R2,R0
+61bf   emplacement : 65536  (0x10000)  ligne n° 22	    LDW R1,(SP)+ // POP R1
+0200   emplacement : 65538  (0x10002)  ligne n° 23	    RTS
