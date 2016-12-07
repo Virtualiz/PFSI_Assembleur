@@ -13,9 +13,13 @@ DEBUT LDW SP,#STACKA
     STW R0,@OUTA //ecrire la sortie dans outa
     JMP #DEBUT-$-2
 
-DISTA LDW R1,#SEUIL //charge le seuil dans R1
+DISTA ADQ -2,SP // Prépare le push
+    STW R1,@SP //PUSH R1
+    LDW R1,#SEUIL //charge le seuil dans R1
     SUB R2,R1,R2 // soustrait par le seuil
     JGE #POSIT-$-2
     NEG R2,R2
 POSIT SRA R2,R0
+    LDW @SP,R1 // POP R1
+    ADQ 2,SP//restore SP
     RTS
