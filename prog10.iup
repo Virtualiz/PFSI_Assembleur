@@ -1,0 +1,18 @@
+ffdc  origine
+ffdc  debut d'execution
+62d0   emplacement : 65500  (0xffdc)  ligne n° 8	DEBUT LDW R2,@INA //lire val dans paramC(tre (R2)
+ffa0   emplacement : 65502  (0xffde) 
+0a50   emplacement : 65504  (0xffe0)  ligne n° 9	    JSR @DISTA
+ffec   emplacement : 65506  (0xffe2) 
+6050   emplacement : 65508  (0xffe4)  ligne n° 10	    STW R0,@OUTA //ecrire la sortie dans outa
+ffa2   emplacement : 65510  (0xffe6) 
+0180   emplacement : 65512  (0xffe8)  ligne n° 11	    JMP #DEBUT-$-2
+fff2   emplacement : 65514  (0xffea) 
+6180   emplacement : 65516  (0xffec)  ligne n° 13	DISTA LDW R1,#SEUIL //charge le seuil dans R1
+0003   emplacement : 65518  (0xffee) 
+f212   emplacement : 65520  (0xfff0)  ligne n° 14	    SUB R2,R1,R2 // soustrait par le seuil
+0480   emplacement : 65522  (0xfff2)  ligne n° 15	    JGE #POSIT-$-2
+0004   emplacement : 65524  (0xfff4) 
+4722   emplacement : 65526  (0xfff6)  ligne n° 16	    NEG R2,R2
+4320   emplacement : 65528  (0xfff8)  ligne n° 17	POSIT SRA R2,R0
+0200   emplacement : 65530  (0xfffa)  ligne n° 18	    RTS
