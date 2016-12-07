@@ -1,0 +1,15 @@
+ffdc  origine
+ffdc  debut d'execution
+60d0   emplacement : 65500  (0xffdc)  ligne n° 8	DEBUT  LDW R0,@INA
+ffa0   emplacement : 65502  (0xffde) 
+6180   emplacement : 65504  (0xffe0)  ligne n° 9	    LDW R1,#SEUIL
+0003   emplacement : 65506  (0xffe2) 
+f010   emplacement : 65508  (0xffe4)  ligne n° 10	    SUB R0,R1,R0
+0480   emplacement : 65510  (0xffe6)  ligne n° 11	    JGE #POSIT-$-2
+0004   emplacement : 65512  (0xffe8) 
+4700   emplacement : 65514  (0xffea)  ligne n° 12	    NEG R0,R0
+4300   emplacement : 65516  (0xffec)  ligne n° 13	POSIT    SRA R0,R0
+6050   emplacement : 65518  (0xffee)  ligne n° 14	    STW R0,@OUTA
+ffa2   emplacement : 65520  (0xfff0) 
+0180   emplacement : 65522  (0xfff2)  ligne n° 15	    JMP #DEBUT-$-2
+ffe8   emplacement : 65524  (0xfff4) 
