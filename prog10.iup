@@ -17,8 +17,8 @@ ff02   emplacement : 65322  (0xff2a)
 0180   emplacement : 65324  (0xff2c)  ligne n° 20	    JMP #DEBUT-$-2
 ffe2   emplacement : 65326  (0xff2e) 
 614f   emplacement : 65328  (0xff30)  ligne n° 22	DISTA STW R1,-(SP) //PUSH R1
-62be   emplacement : 65330  (0xff32)  ligne n° 23	    LDW R2,(BP)+ //Load R2 via BP
-61ae   emplacement : 65332  (0xff34)  ligne n° 24	    LDW R1,(BP) //charge le seuil dans R1 via BP
+62ae   emplacement : 65330  (0xff32)  ligne n° 23	    LDW R2,(BP) //Load R2 via BP
+61ce   emplacement : 65332  (0xff34)  ligne n° 24	    LDW R1,-(BP) //charge le seuil dans R1 via BP
 f210   emplacement : 65334  (0xff36)  ligne n° 25	    SUB R2,R1,R0 // soustrait par le seuil
 0a50   emplacement : 65336  (0xff38)  ligne n° 26	    JSR @ABSA
 ff42   emplacement : 65338  (0xff3a) 

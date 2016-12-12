@@ -20,8 +20,8 @@ DEBUT LDW SP,#STACKA
     JMP #DEBUT-$-2
 
 DISTA STW R1,-(SP) //PUSH R1
-    LDW R2,(BP)+ //Load R2 via BP
-    LDW R1,(BP) //charge le seuil dans R1 via BP
+    LDW R2,(BP) //Load R2 via BP
+    LDW R1,-(BP) //charge le seuil dans R1 via BP
     SUB R2,R1,R0 // soustrait par le seuil
     JSR @ABSA
     SRA R0,R0 // div par 2
