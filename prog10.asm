@@ -15,9 +15,12 @@ DEBUT LDW SP,#STACKA
 
 DISTA STW R1,-(SP) //PUSH R1
     LDW R1,#SEUIL //charge le seuil dans R1
-    SUB R2,R1,R2 // soustrait par le seuil
-    JGE #POSIT-$-2
-    NEG R2,R2
-POSIT SRA R2,R0
+    SUB R2,R1,R0 // soustrait par le seuil
+    JSR @ABSA
+    SRA R0,R0 // div par 2
     LDW R1,(SP)+ // POP R1
     RTS
+
+ABSA JGE #FABSA-$-2
+    NEG R0,R0
+FABSA RTS

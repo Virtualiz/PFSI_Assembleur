@@ -13,10 +13,13 @@ ffee   emplacement : 65314  (0xff22)
 614f   emplacement : 65316  (0xff24)  ligne n° 16	DISTA STW R1,-(SP) //PUSH R1
 6180   emplacement : 65318  (0xff26)  ligne n° 17	    LDW R1,#SEUIL //charge le seuil dans R1
 0003   emplacement : 65320  (0xff28) 
-f212   emplacement : 65322  (0xff2a)  ligne n° 18	    SUB R2,R1,R2 // soustrait par le seuil
-0480   emplacement : 65324  (0xff2c)  ligne n° 19	    JGE #POSIT-$-2
-0004   emplacement : 65326  (0xff2e) 
-4722   emplacement : 65328  (0xff30)  ligne n° 20	    NEG R2,R2
-4320   emplacement : 65330  (0xff32)  ligne n° 21	POSIT SRA R2,R0
-61bf   emplacement : 65332  (0xff34)  ligne n° 22	    LDW R1,(SP)+ // POP R1
-0200   emplacement : 65334  (0xff36)  ligne n° 23	    RTS
+f210   emplacement : 65322  (0xff2a)  ligne n° 18	    SUB R2,R1,R0 // soustrait par le seuil
+0a50   emplacement : 65324  (0xff2c)  ligne n° 19	    JSR @ABSA
+ff36   emplacement : 65326  (0xff2e) 
+4300   emplacement : 65328  (0xff30)  ligne n° 20	    SRA R0,R0 // div par 2
+61bf   emplacement : 65330  (0xff32)  ligne n° 21	    LDW R1,(SP)+ // POP R1
+0200   emplacement : 65332  (0xff34)  ligne n° 22	    RTS
+0480   emplacement : 65334  (0xff36)  ligne n° 24	ABSA JGE #FABSA-$-2
+0004   emplacement : 65336  (0xff38) 
+4700   emplacement : 65338  (0xff3a)  ligne n° 25	    NEG R0,R0
+0200   emplacement : 65340  (0xff3c)  ligne n° 26	FABSA RTS
