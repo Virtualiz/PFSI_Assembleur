@@ -1,26 +1,30 @@
 ff10  origine
 ff10  debut d'execution
-6f80   emplacement : 65296  (0xff10)  ligne n° 10	DEBUT LDW SP,#STACKA
+6f80   emplacement : 65296  (0xff10)  ligne n° 11	DEBUT LDW SP,#STACKA
 1000   emplacement : 65298  (0xff12) 
-62d0   emplacement : 65300  (0xff14)  ligne n° 11	    LDW R2,@INA //lire val dans parametre (R2)
+62d0   emplacement : 65300  (0xff14)  ligne n° 12	    LDW R2,@INA //lire val dans parametre (R2)
 ff00   emplacement : 65302  (0xff16) 
-0a50   emplacement : 65304  (0xff18)  ligne n° 12	    JSR @DISTA
-ff24   emplacement : 65306  (0xff1a) 
-6050   emplacement : 65308  (0xff1c)  ligne n° 13	    STW R0,@OUTA //ecrire la sortie dans outa
-ff02   emplacement : 65310  (0xff1e) 
-0180   emplacement : 65312  (0xff20)  ligne n° 14	    JMP #DEBUT-$-2
-ffee   emplacement : 65314  (0xff22) 
-614f   emplacement : 65316  (0xff24)  ligne n° 16	DISTA STW R1,-(SP) //PUSH R1
-6180   emplacement : 65318  (0xff26)  ligne n° 17	    LDW R1,#SEUIL //charge le seuil dans R1
-0003   emplacement : 65320  (0xff28) 
-f210   emplacement : 65322  (0xff2a)  ligne n° 18	    SUB R2,R1,R0 // soustrait par le seuil
-0a50   emplacement : 65324  (0xff2c)  ligne n° 19	    JSR @ABSA
-ff36   emplacement : 65326  (0xff2e) 
-4300   emplacement : 65328  (0xff30)  ligne n° 20	    SRA R0,R0 // div par 2
-61bf   emplacement : 65330  (0xff32)  ligne n° 21	    LDW R1,(SP)+ // POP R1
-0200   emplacement : 65332  (0xff34)  ligne n° 22	    RTS
-6090   emplacement : 65334  (0xff36)  ligne n° 24	ABSA LDW R0,R0 // fonction abs, reload flag
-0480   emplacement : 65336  (0xff38)  ligne n° 25	    JGE #FABSA-$-2
-0004   emplacement : 65338  (0xff3a) 
-4700   emplacement : 65340  (0xff3c)  ligne n° 26	    NEG R0,R0
-0200   emplacement : 65342  (0xff3e)  ligne n° 27	FABSA RTS
+624f   emplacement : 65304  (0xff18)  ligne n° 13	    STW R2, -(SP) //store R2
+6f1e   emplacement : 65306  (0xff1a)  ligne n° 14	    STW SP,BP // BP <= SP (parameter address)
+0a50   emplacement : 65308  (0xff1c)  ligne n° 15	    JSR @DISTA
+ff2a   emplacement : 65310  (0xff1e) 
+3f02   emplacement : 65312  (0xff20)  ligne n° 16	    ADQ 2,SP // downgrade stack pointer
+6050   emplacement : 65314  (0xff22)  ligne n° 17	    STW R0,@OUTA //ecrire la sortie dans outa
+ff02   emplacement : 65316  (0xff24) 
+0180   emplacement : 65318  (0xff26)  ligne n° 18	    JMP #DEBUT-$-2
+ffe8   emplacement : 65320  (0xff28) 
+614f   emplacement : 65322  (0xff2a)  ligne n° 20	DISTA STW R1,-(SP) //PUSH R1
+62ae   emplacement : 65324  (0xff2c)  ligne n° 21	    LDW R2,(BP) //Load R2 via BP
+6180   emplacement : 65326  (0xff2e)  ligne n° 22	    LDW R1,#SEUIL //charge le seuil dans R1
+0003   emplacement : 65328  (0xff30) 
+f210   emplacement : 65330  (0xff32)  ligne n° 23	    SUB R2,R1,R0 // soustrait par le seuil
+0a50   emplacement : 65332  (0xff34)  ligne n° 24	    JSR @ABSA
+ff3e   emplacement : 65334  (0xff36) 
+4300   emplacement : 65336  (0xff38)  ligne n° 25	    SRA R0,R0 // div par 2
+61bf   emplacement : 65338  (0xff3a)  ligne n° 26	    LDW R1,(SP)+ // POP R1
+0200   emplacement : 65340  (0xff3c)  ligne n° 27	    RTS
+6090   emplacement : 65342  (0xff3e)  ligne n° 29	ABSA LDW R0,R0 // fonction abs, reload flag
+0480   emplacement : 65344  (0xff40)  ligne n° 30	    JGE #FABSA-$-2
+0004   emplacement : 65346  (0xff42) 
+4700   emplacement : 65348  (0xff44)  ligne n° 31	    NEG R0,R0
+0200   emplacement : 65350  (0xff46)  ligne n° 32	FABSA RTS
