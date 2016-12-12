@@ -21,6 +21,7 @@ DISTA STW R1,-(SP) //PUSH R1
     LDW R1,(SP)+ // POP R1
     RTS
 
-ABSA JGE #FABSA-$-2
+ABSA LDW R0,R0 // fonction abs, reload flag
+    JGE #FABSA-$-2
     NEG R0,R0
 FABSA RTS

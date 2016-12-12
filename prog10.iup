@@ -19,7 +19,8 @@ ff36   emplacement : 65326  (0xff2e)
 4300   emplacement : 65328  (0xff30)  ligne n° 20	    SRA R0,R0 // div par 2
 61bf   emplacement : 65330  (0xff32)  ligne n° 21	    LDW R1,(SP)+ // POP R1
 0200   emplacement : 65332  (0xff34)  ligne n° 22	    RTS
-0480   emplacement : 65334  (0xff36)  ligne n° 24	ABSA JGE #FABSA-$-2
-0004   emplacement : 65336  (0xff38) 
-4700   emplacement : 65338  (0xff3a)  ligne n° 25	    NEG R0,R0
-0200   emplacement : 65340  (0xff3c)  ligne n° 26	FABSA RTS
+6090   emplacement : 65334  (0xff36)  ligne n° 24	ABSA LDW R0,R0 // fonction abs, reload flag
+0480   emplacement : 65336  (0xff38)  ligne n° 25	    JGE #FABSA-$-2
+0004   emplacement : 65338  (0xff3a) 
+4700   emplacement : 65340  (0xff3c)  ligne n° 26	    NEG R0,R0
+0200   emplacement : 65342  (0xff3e)  ligne n° 27	FABSA RTS
