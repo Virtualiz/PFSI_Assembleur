@@ -1,0 +1,19 @@
+ff10  origine
+ff10  debut d'execution
+6f80   emplacement : 65296  (0xff10)  ligne n° 12	DEBUT LDW SP,#STACKA // initialisation du stackpointer
+1000   emplacement : 65298  (0xff12) 
+6080   emplacement : 65300  (0xff14)  ligne n° 13	    LDW R0,#INIT // on charge la valeur d'init adns R0
+0000   emplacement : 65302  (0xff16) 
+6050   emplacement : 65304  (0xff18)  ligne n° 14	    STW R0,@CNTMA // initialisation de CNTMA
+ff00   emplacement : 65306  (0xff1a) 
+6180   emplacement : 65308  (0xff1c)  ligne n° 15	    LDW R1,#MAX // on charge la valeur max dans R1
+006f   emplacement : 65310  (0xff1e) 
+3010   emplacement : 65312  (0xff20)  ligne n° 16	LOOP ADQ INC, R0 // incrementation de R0
+4f01   emplacement : 65314  (0xff22)  ligne n° 17	    CMP R0, R1 // on compare R0 et R1
+1704   emplacement : 65316  (0xff24)  ligne n° 18	    BLW STORE-$-2 // si R0 <= MAX, on va a STORE
+6080   emplacement : 65318  (0xff26)  ligne n° 19	    LDW R0, #INIT // sinon, on reinitialise R0 a 0
+0000   emplacement : 65320  (0xff28) 
+6050   emplacement : 65322  (0xff2a)  ligne n° 20	STORE STW R0, @CNTMA // on charge R0 a l'adresse CNTMA
+ff00   emplacement : 65324  (0xff2c) 
+0180   emplacement : 65326  (0xff2e)  ligne n° 21	    JMP #LOOP-$-2 // jump au debut de loop
+fff0   emplacement : 65328  (0xff30) 
