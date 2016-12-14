@@ -16,7 +16,7 @@ DEBUT LDW SP,#STACKA // initialisation du stackpointer
 LOOP LDW R0, @CNTMA // on charge CNTMA dans R0
     ADQ INC, R0 // incrementation de R0
     CMP R0, R1 // on compare R0 et R1
-    BLW STORE-$-2 // si R0 <= MAX, on va a STORE
+    BLE STORE-$-2 // si R0 <= MAX, on va a STORE
     LDW R0, #INIT // sinon, on reinitialise R0 a 0
     STW R0, @CNTMA // on charge R0 a l'adresse CNTMA
 STORE STW R0, @CNTMA // on charge R0 a l'adresse CNTMA

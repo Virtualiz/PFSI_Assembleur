@@ -12,7 +12,7 @@ ff00   emplacement : 65306  (0xff1a)
 ff00   emplacement : 65314  (0xff22) 
 3010   emplacement : 65316  (0xff24)  ligne n° 17	    ADQ INC, R0 // incrementation de R0
 4f01   emplacement : 65318  (0xff26)  ligne n° 18	    CMP R0, R1 // on compare R0 et R1
-1708   emplacement : 65320  (0xff28)  ligne n° 19	    BLW STORE-$-2 // si R0 <= MAX, on va a STORE
+1508   emplacement : 65320  (0xff28)  ligne n° 19	    BLE STORE-$-2 // si R0 <= MAX, on va a STORE
 6080   emplacement : 65322  (0xff2a)  ligne n° 20	    LDW R0, #INIT // sinon, on reinitialise R0 a 0
 0000   emplacement : 65324  (0xff2c) 
 6050   emplacement : 65326  (0xff2e)  ligne n° 21	    STW R0, @CNTMA // on charge R0 a l'adresse CNTMA
