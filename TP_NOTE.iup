@@ -8,12 +8,16 @@ ff10  debut d'execution
 ff00   emplacement : 65306  (0xff1a) 
 6180   emplacement : 65308  (0xff1c)  ligne n° 15	    LDW R1,#MAX // on charge la valeur max dans R1
 006f   emplacement : 65310  (0xff1e) 
-3010   emplacement : 65312  (0xff20)  ligne n° 16	LOOP ADQ INC, R0 // incrementation de R0
-4f01   emplacement : 65314  (0xff22)  ligne n° 17	    CMP R0, R1 // on compare R0 et R1
-1704   emplacement : 65316  (0xff24)  ligne n° 18	    BLW STORE-$-2 // si R0 <= MAX, on va a STORE
-6080   emplacement : 65318  (0xff26)  ligne n° 19	    LDW R0, #INIT // sinon, on reinitialise R0 a 0
-0000   emplacement : 65320  (0xff28) 
-6050   emplacement : 65322  (0xff2a)  ligne n° 20	STORE STW R0, @CNTMA // on charge R0 a l'adresse CNTMA
-ff00   emplacement : 65324  (0xff2c) 
-0180   emplacement : 65326  (0xff2e)  ligne n° 21	    JMP #LOOP-$-2 // jump au debut de loop
-fff0   emplacement : 65328  (0xff30) 
+60d0   emplacement : 65312  (0xff20)  ligne n° 16	LOOP LDW R0, @CNTMA // on charge CNTMA dans R0
+ff00   emplacement : 65314  (0xff22) 
+3010   emplacement : 65316  (0xff24)  ligne n° 17	    ADQ INC, R0 // incrementation de R0
+4f01   emplacement : 65318  (0xff26)  ligne n° 18	    CMP R0, R1 // on compare R0 et R1
+1708   emplacement : 65320  (0xff28)  ligne n° 19	    BLW STORE-$-2 // si R0 <= MAX, on va a STORE
+6080   emplacement : 65322  (0xff2a)  ligne n° 20	    LDW R0, #INIT // sinon, on reinitialise R0 a 0
+0000   emplacement : 65324  (0xff2c) 
+6050   emplacement : 65326  (0xff2e)  ligne n° 21	    STW R0, @CNTMA // on charge R0 a l'adresse CNTMA
+ff00   emplacement : 65328  (0xff30) 
+6050   emplacement : 65330  (0xff32)  ligne n° 22	STORE STW R0, @CNTMA // on charge R0 a l'adresse CNTMA
+ff00   emplacement : 65332  (0xff34) 
+0180   emplacement : 65334  (0xff36)  ligne n° 23	    JMP #LOOP-$-2 // jump au debut de loop
+ffe8   emplacement : 65336  (0xff38) 
