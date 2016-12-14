@@ -1,23 +1,37 @@
 ff10  origine
 ff10  debut d'execution
-6f80   emplacement : 65296  (0xff10)  ligne n° 12	DEBUT LDW SP,#STACKA // initialisation du stackpointer
+6f80   emplacement : 65296  (0xff10)  ligne n° 13	MAIN_PRGA LDW SP,#STACKA     // initialisation du stackpointer
 1000   emplacement : 65298  (0xff12) 
-6080   emplacement : 65300  (0xff14)  ligne n° 13	    LDW R0,#INIT // on charge la valeur d'init adns R0
+6080   emplacement : 65300  (0xff14)  ligne n° 14	    LDW R0,#INIT             // on charge la valeur d'init adns R0
 0000   emplacement : 65302  (0xff16) 
-6050   emplacement : 65304  (0xff18)  ligne n° 14	    STW R0,@CNTMA // initialisation de CNTMA
+6050   emplacement : 65304  (0xff18)  ligne n° 15	    STW R0,@CNTMA            // initialisation de CNTMA
 ff00   emplacement : 65306  (0xff1a) 
-6180   emplacement : 65308  (0xff1c)  ligne n° 15	    LDW R1,#MAX // on charge la valeur max dans R1
+6180   emplacement : 65308  (0xff1c)  ligne n° 16	    LDW R1,#MAX              // on charge la valeur max dans R1
 006f   emplacement : 65310  (0xff1e) 
-60d0   emplacement : 65312  (0xff20)  ligne n° 16	LOOP LDW R0, @CNTMA // on charge CNTMA dans R0
-ff00   emplacement : 65314  (0xff22) 
-3010   emplacement : 65316  (0xff24)  ligne n° 17	    ADQ INC, R0 // incrementation de R0
-4f01   emplacement : 65318  (0xff26)  ligne n° 18	    CMP R0, R1 // on compare R0 et R1
-1508   emplacement : 65320  (0xff28)  ligne n° 19	    BLE STORE-$-2 // si R0 <= MAX, on va a STORE
-6080   emplacement : 65322  (0xff2a)  ligne n° 20	    LDW R0, #INIT // sinon, on reinitialise R0 a 0
-0000   emplacement : 65324  (0xff2c) 
-6050   emplacement : 65326  (0xff2e)  ligne n° 21	    STW R0, @CNTMA // on charge R0 a l'adresse CNTMA
-ff00   emplacement : 65328  (0xff30) 
-6050   emplacement : 65330  (0xff32)  ligne n° 22	STORE STW R0, @CNTMA // on charge R0 a l'adresse CNTMA
-ff00   emplacement : 65332  (0xff34) 
-0180   emplacement : 65334  (0xff36)  ligne n° 23	    JMP #LOOP-$-2 // jump au debut de loop
-ffe8   emplacement : 65336  (0xff38) 
+6280   emplacement : 65312  (0xff20)  ligne n° 17	    LDW R2,#IT_PRGA          // intialisation table vecteur
+ff44   emplacement : 65314  (0xff22) 
+6200   emplacement : 65316  (0xff24)  ligne n° 18	    STW R2,#VECTA
+0088   emplacement : 65318  (0xff26) 
+0700   emplacement : 65320  (0xff28)  ligne n° 19	    ENI                   //activation des interruptions
+60d0   emplacement : 65322  (0xff2a)  ligne n° 20	LOOP LDW R0, @CNTMA          // on charge CNTMA dans R0
+ff00   emplacement : 65324  (0xff2c) 
+3010   emplacement : 65326  (0xff2e)  ligne n° 21	    ADQ INC, R0              // incrementation de R0
+4f01   emplacement : 65328  (0xff30)  ligne n° 22	    CMP R0, R1               // on compare R0 et R1
+1508   emplacement : 65330  (0xff32)  ligne n° 23	    BLE STORE-$-2            // si R0 <= MAX, on va a STORE
+6080   emplacement : 65332  (0xff34)  ligne n° 24	    LDW R0, #INIT            // sinon, on reinitialise R0 a 0
+0000   emplacement : 65334  (0xff36) 
+6050   emplacement : 65336  (0xff38)  ligne n° 25	    STW R0, @CNTMA           // on charge R0 a l'adresse CNTMA
+ff00   emplacement : 65338  (0xff3a) 
+6050   emplacement : 65340  (0xff3c)  ligne n° 26	STORE STW R0, @CNTMA         // on charge R0 a l'adresse CNTMA
+ff00   emplacement : 65342  (0xff3e) 
+0180   emplacement : 65344  (0xff40)  ligne n° 27	    JMP #LOOP-$-2            // jump au debut de loop
+ffe8   emplacement : 65346  (0xff42) 
+604f   emplacement : 65348  (0xff44)  ligne n° 32	IT_PRGA STW R0, -(SP)        // sauve R0
+60d0   emplacement : 65350  (0xff46)  ligne n° 33	    LDW R0, @CNTIA           // on copie cnti dans R0
+ff02   emplacement : 65352  (0xff48) 
+3002   emplacement : 65354  (0xff4a)  ligne n° 34	    ADQ INC2, R0             // on ajoute INC2 a R0
+6050   emplacement : 65356  (0xff4c)  ligne n° 35	    STW R0, @CNTIA           // on recopie R0 dans cnti
+ff02   emplacement : 65358  (0xff4e) 
+60bf   emplacement : 65360  (0xff50)  ligne n° 36	    LDW R0, (SP)+            // recupere R0
+0700   emplacement : 65362  (0xff52)  ligne n° 37	    ENI                      // reactive les interruptions
+0300   emplacement : 65364  (0xff54)  ligne n° 38	    RTI                      // sortie d'interruption
