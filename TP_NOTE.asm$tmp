@@ -5,8 +5,8 @@ INIT EQU 0x0000              // valeur d'initialisation de CNTMA
 MAX EQU 0x006F               // si CNTMA > MAX, RAZ
 INC EQU 0x0010               // valeur a ajouter a CNTMA
 LOADA EQU 0xFF10
-VECTA equ 0x0088     // adresse du vecteur IRQ2 : 4x(32+2)=0x0088
-
+VECTA2 EQU 0x0088    // adresse du vecteur IRQ2 : 4x(32+2)=0x0088
+VECTA3 EQU 0x008C    // adresse du vecteur IRQ3 : 4x(32+3)
 ORG LOADA                    // chargement du programme
 START LOADA                  // adresse de la premiere instruction
 
@@ -14,13 +14,14 @@ MAIN_PRGA LDW SP,#STACKA     // initialisation du stackpointer
     LDW R0,#INIT             // on charge la valeur d'init adns R0
     STW R0,@CNTMA            // initialisation de CNTMA
     LDW R1,#MAX              // on charge la valeur max dans R1
-    LDW R2,#IT_PRGA          // intialisation table vecteur
+    LDW R2,#IT_PRGA          // intialisation table vecteur IRQ2
     STW R2, @VECTA
+    LDW R2,#NOV_PRGA         // intialisation table vecteur IRQ3
+    STW R2, @VECTA3
     ENI                      //activation des interruptions
 LOOP DSI                     // on interdit les interruptions
     LDW R0, @CNTMA           // on charge CNTMA dans R0
     ADQ INC, R0              // incrementation de R0
-    HLT                      // test du halte
     CMP R0, R1               // on compare R0 et R1
     BLE STORE-$-2            // si R0 <= MAX, on va a STORE
     LDW R0, #INIT            // sinon, on reinitialise R0 a 0
@@ -39,3 +40,12 @@ IT_PRGA STW R0, -(SP)        // sauve R0
     LDW R0, (SP)+            // recupere R0
     ENI                      // reactive les interruptions
     RTI                      // sortie d'interruption
+
+DIFF equ 0x0001
+NOV_PRGA STW R0, -(SP)
+     LDW R0, @CNTMA // on copie cntm dans R0
+     ADQ -DIFF, R0 // on soustraie DIFF de R0
+     STW R0, @CNTMA // on recopie R0 dans cntm
+     LDW R0, (SP)+
+     ENI
+     RTI
