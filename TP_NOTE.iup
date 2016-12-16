@@ -8,33 +8,45 @@ ff10  debut d'execution
 ff00   emplacement : 65306  (0xff1a) 
 6180   emplacement : 65308  (0xff1c)  ligne n° 16	    LDW R1,#MAX              // on charge la valeur max dans R1
 006f   emplacement : 65310  (0xff1e) 
-6280   emplacement : 65312  (0xff20)  ligne n° 17	    LDW R2,#IT_PRGA          // intialisation table vecteur
-ff4a   emplacement : 65314  (0xff22) 
-6250   emplacement : 65316  (0xff24)  ligne n° 18	    STW R2, @VECTA
+6280   emplacement : 65312  (0xff20)  ligne n° 17	    LDW R2,#IT_PRGA          // intialisation table vecteur IRQ2
+ff50   emplacement : 65314  (0xff22) 
+6250   emplacement : 65316  (0xff24)  ligne n° 18	    STW R2, @VECTA2
 0088   emplacement : 65318  (0xff26) 
-0700   emplacement : 65320  (0xff28)  ligne n° 19	    ENI                      //activation des interruptions
-0600   emplacement : 65322  (0xff2a)  ligne n° 20	LOOP DSI                     // on interdit les interruptions
-60d0   emplacement : 65324  (0xff2c)  ligne n° 21	    LDW R0, @CNTMA           // on charge CNTMA dans R0
-ff00   emplacement : 65326  (0xff2e) 
-3010   emplacement : 65328  (0xff30)  ligne n° 22	    ADQ INC, R0              // incrementation de R0
-0100   emplacement : 65330  (0xff32)  ligne n° 23	    HLT                      // test du halte
-4f01   emplacement : 65332  (0xff34)  ligne n° 24	    CMP R0, R1               // on compare R0 et R1
-1508   emplacement : 65334  (0xff36)  ligne n° 25	    BLE STORE-$-2            // si R0 <= MAX, on va a STORE
-6080   emplacement : 65336  (0xff38)  ligne n° 26	    LDW R0, #INIT            // sinon, on reinitialise R0 a 0
-0000   emplacement : 65338  (0xff3a) 
-6050   emplacement : 65340  (0xff3c)  ligne n° 27	    STW R0, @CNTMA           // on charge R0 a l'adresse CNTMA
-ff00   emplacement : 65342  (0xff3e) 
-6050   emplacement : 65344  (0xff40)  ligne n° 28	STORE STW R0, @CNTMA         // on charge R0 a l'adresse CNTMA
-ff00   emplacement : 65346  (0xff42) 
-0700   emplacement : 65348  (0xff44)  ligne n° 29	    ENI                      //activation des interruptions
-0180   emplacement : 65350  (0xff46)  ligne n° 30	    JMP #LOOP-$-2            // jump au debut de loop
-ffe2   emplacement : 65352  (0xff48) 
-604f   emplacement : 65354  (0xff4a)  ligne n° 35	IT_PRGA STW R0, -(SP)        // sauve R0
-60d0   emplacement : 65356  (0xff4c)  ligne n° 36	    LDW R0, @CNTIA           // on copie cnti dans R0
-ff00   emplacement : 65358  (0xff4e) 
-3002   emplacement : 65360  (0xff50)  ligne n° 37	    ADQ INC2, R0             // on ajoute INC2 a R0
-6050   emplacement : 65362  (0xff52)  ligne n° 38	    STW R0, @CNTIA           // on recopie R0 dans cnti
+6280   emplacement : 65320  (0xff28)  ligne n° 19	    LDW R2,#NOV_PRGA         // intialisation table vecteur IRQ3
+ff62   emplacement : 65322  (0xff2a) 
+6250   emplacement : 65324  (0xff2c)  ligne n° 20	    STW R2, @VECTA3
+008c   emplacement : 65326  (0xff2e) 
+0700   emplacement : 65328  (0xff30)  ligne n° 21	    ENI                      //activation des interruptions
+0600   emplacement : 65330  (0xff32)  ligne n° 22	LOOP DSI                     // on interdit les interruptions
+60d0   emplacement : 65332  (0xff34)  ligne n° 23	    LDW R0, @CNTMA           // on charge CNTMA dans R0
+ff00   emplacement : 65334  (0xff36) 
+3010   emplacement : 65336  (0xff38)  ligne n° 24	    ADQ INC, R0              // incrementation de R0
+4f01   emplacement : 65338  (0xff3a)  ligne n° 25	    CMP R0, R1               // on compare R0 et R1
+1508   emplacement : 65340  (0xff3c)  ligne n° 26	    BLE STORE-$-2            // si R0 <= MAX, on va a STORE
+6080   emplacement : 65342  (0xff3e)  ligne n° 27	    LDW R0, #INIT            // sinon, on reinitialise R0 a 0
+0000   emplacement : 65344  (0xff40) 
+6050   emplacement : 65346  (0xff42)  ligne n° 28	    STW R0, @CNTMA           // on charge R0 a l'adresse CNTMA
+ff00   emplacement : 65348  (0xff44) 
+6050   emplacement : 65350  (0xff46)  ligne n° 29	STORE STW R0, @CNTMA         // on charge R0 a l'adresse CNTMA
+ff00   emplacement : 65352  (0xff48) 
+0700   emplacement : 65354  (0xff4a)  ligne n° 30	    ENI                      //activation des interruptions
+0180   emplacement : 65356  (0xff4c)  ligne n° 31	    JMP #LOOP-$-2            // jump au debut de loop
+ffe4   emplacement : 65358  (0xff4e) 
+604f   emplacement : 65360  (0xff50)  ligne n° 36	IT_PRGA STW R0, -(SP)        // sauve R0
+60d0   emplacement : 65362  (0xff52)  ligne n° 37	    LDW R0, @CNTIA           // on copie cnti dans R0
 ff00   emplacement : 65364  (0xff54) 
-60bf   emplacement : 65366  (0xff56)  ligne n° 39	    LDW R0, (SP)+            // recupere R0
-0700   emplacement : 65368  (0xff58)  ligne n° 40	    ENI                      // reactive les interruptions
-0300   emplacement : 65370  (0xff5a)  ligne n° 41	    RTI                      // sortie d'interruption
+3002   emplacement : 65366  (0xff56)  ligne n° 38	    ADQ INC2, R0             // on ajoute INC2 a R0
+6050   emplacement : 65368  (0xff58)  ligne n° 39	    STW R0, @CNTIA           // on recopie R0 dans cnti
+ff00   emplacement : 65370  (0xff5a) 
+60bf   emplacement : 65372  (0xff5c)  ligne n° 40	    LDW R0, (SP)+            // recupere R0
+0700   emplacement : 65374  (0xff5e)  ligne n° 41	    ENI                      // reactive les interruptions
+0300   emplacement : 65376  (0xff60)  ligne n° 42	    RTI                      // sortie d'interruption
+604f   emplacement : 65378  (0xff62)  ligne n° 45	NOV_PRGA STW R0, -(SP)
+60d0   emplacement : 65380  (0xff64)  ligne n° 46	     LDW R0, @CNTMA // on copie cntm dans R0
+ff00   emplacement : 65382  (0xff66) 
+30ff   emplacement : 65384  (0xff68)  ligne n° 47	     ADQ -DIFF, R0 // on soustraie DIFF de R0
+6050   emplacement : 65386  (0xff6a)  ligne n° 48	     STW R0, @CNTMA // on recopie R0 dans cntm
+ff00   emplacement : 65388  (0xff6c) 
+60bf   emplacement : 65390  (0xff6e)  ligne n° 49	     LDW R0, (SP)+
+0700   emplacement : 65392  (0xff70)  ligne n° 50	     ENI
+0300   emplacement : 65394  (0xff72)  ligne n° 51	     RTI

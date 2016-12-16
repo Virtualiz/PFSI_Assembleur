@@ -15,7 +15,7 @@ MAIN_PRGA LDW SP,#STACKA     // initialisation du stackpointer
     STW R0,@CNTMA            // initialisation de CNTMA
     LDW R1,#MAX              // on charge la valeur max dans R1
     LDW R2,#IT_PRGA          // intialisation table vecteur IRQ2
-    STW R2, @VECTA
+    STW R2, @VECTA2
     LDW R2,#NOV_PRGA         // intialisation table vecteur IRQ3
     STW R2, @VECTA3
     ENI                      //activation des interruptions
@@ -41,7 +41,7 @@ IT_PRGA STW R0, -(SP)        // sauve R0
     ENI                      // reactive les interruptions
     RTI                      // sortie d'interruption
 
-DIFF equ 0x0001
+DIFF EQU 0x0001
 NOV_PRGA STW R0, -(SP)
      LDW R0, @CNTMA // on copie cntm dans R0
      ADQ -DIFF, R0 // on soustraie DIFF de R0
