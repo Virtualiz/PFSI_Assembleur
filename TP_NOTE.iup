@@ -10,7 +10,7 @@ ff00   emplacement : 65306  (0xff1a)
 006f   emplacement : 65310  (0xff1e) 
 6280   emplacement : 65312  (0xff20)  ligne n° 17	    LDW R2,#IT_PRGA          // intialisation table vecteur
 ff44   emplacement : 65314  (0xff22) 
-6200   emplacement : 65316  (0xff24)  ligne n° 18	    STW R2,#VECTA
+6250   emplacement : 65316  (0xff24)  ligne n° 18	    STW R2, @VECTA
 0088   emplacement : 65318  (0xff26) 
 0700   emplacement : 65320  (0xff28)  ligne n° 19	    ENI                   //activation des interruptions
 60d0   emplacement : 65322  (0xff2a)  ligne n° 20	LOOP LDW R0, @CNTMA          // on charge CNTMA dans R0

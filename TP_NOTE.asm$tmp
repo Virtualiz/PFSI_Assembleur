@@ -15,7 +15,7 @@ MAIN_PRGA LDW SP,#STACKA     // initialisation du stackpointer
     STW R0,@CNTMA            // initialisation de CNTMA
     LDW R1,#MAX              // on charge la valeur max dans R1
     LDW R2,#IT_PRGA          // intialisation table vecteur
-    STW R2,#VECTA
+    STW R2, @VECTA
     ENI                   //activation des interruptions
 LOOP LDW R0, @CNTMA          // on charge CNTMA dans R0
     ADQ INC, R0              // incrementation de R0
