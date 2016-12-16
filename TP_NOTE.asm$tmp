@@ -26,7 +26,7 @@ LOOP LDW R0, @CNTMA          // on charge CNTMA dans R0
 STORE STW R0, @CNTMA         // on charge R0 a l'adresse CNTMA
     JMP #LOOP-$-2            // jump au debut de loop
 
-CNTIA EQU 0xFF02             // adresse de cnti
+CNTIA EQU 0xFF00             // adresse de cnti
 INC2 EQU 0x0002              // valeur a ajouter a cnti
 
 IT_PRGA STW R0, -(SP)        // sauve R0
