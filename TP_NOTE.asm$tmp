@@ -22,7 +22,6 @@ MAIN_PRGA LDW SP,#STACKA     // initialisation du stackpointer
 LOOP DSI                     // on interdit les interruptions
     LDW R0, @CNTMA           // on charge CNTMA dans R0
     ADQ INC, R0              // incrementation de R0
-    TRP #34                  
     CMP R0, R1               // on compare R0 et R1
     BLE STORE-$-2            // si R0 <= MAX, on va a STORE
     LDW R0, #INIT            // sinon, on reinitialise R0 a 0
